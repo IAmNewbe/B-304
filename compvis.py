@@ -46,15 +46,15 @@ def stackImages(scale,imgArray):
         ver = hor
     return ver
 
-lowerKorban = (10, 100, 20)
-upperKorban = (25, 255, 255)
+lowerYellow = (10, 100, 20)
+upperYellow = (25, 255, 255)
 
 while True:
     success, img = cap.read()
     img = cv2.flip(img, 1)
     blurred = cv2.GaussianBlur(img, (11,11), 0)
     hsv = cv2.cvtColor(blurred, cv2.COLOR_BGR2HSV)
-    mask = cv2.inRange(hsv, lowerKorban, upperKorban)
+    mask = cv2.inRange(hsv, lowerYellow, upperYellow)
     erode = cv2.erode(mask, None, iterations=2)
     dilate = cv2.dilate(mask, None, iterations=2)
     
